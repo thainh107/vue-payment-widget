@@ -4,12 +4,14 @@
     <p>Message is: {{ message }}</p>
     <CountrySelector></CountrySelector>
     <PaymentMethods></PaymentMethods>
+    <PaymentMethodForm></PaymentMethodForm>
   </div>
 </template>
 
 <script>
 import PaymentMethods from "./PaymentMethods";
 import CountrySelector from "./CountrySelector";
+import PaymentMethodForm from "./PaymentMethodForm";
 export default {
   name: "PaymentWidget",
   data() {
@@ -18,6 +20,7 @@ export default {
   components: {
     PaymentMethods,
     CountrySelector,
+    PaymentMethodForm,
   },
 };
 </script>
