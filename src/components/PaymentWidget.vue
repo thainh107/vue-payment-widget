@@ -1,5 +1,7 @@
 <template>
   <div class="hello">
+    <h1>Payment Widget</h1>
+    
     <CountrySelector v-on:countryToHome="countryChange" />
     <PaymentMethods
       v-bind:methodsData="paymentMethods"
@@ -23,9 +25,9 @@ export default {
         password: "",
         satisfaction: "",
       },
-      selectedCode: "",
+      selectedCode: "VN",
       paymentMethods: [],
-      selectedMethod: ""
+      selectedMethod: "",
     };
   },
   components: {
@@ -56,6 +58,9 @@ export default {
         })
         .catch((err) => console.log(err));
     },
+  },
+  created() {
+    this.countryChange(this.selectedCode);
   },
 };
 </script>

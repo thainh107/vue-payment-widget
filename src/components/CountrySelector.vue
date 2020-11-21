@@ -1,6 +1,6 @@
 <template>
   <div>
-    <label>Country Selector</label>
+    <label class="title">Country Selector</label>
     <select v-model="selectedCode" v-on:change="emitToParent">
       <option
         v-for="item in priorities"
@@ -45,7 +45,7 @@ export default {
           states: null,
         },
       ],
-      selectedCode: "",
+      selectedCode: "VN",
     };
   },
   methods: {
@@ -55,3 +55,10 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.title {
+  margin-right: 10px;
+}
+
+</style>
