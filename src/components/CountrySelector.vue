@@ -1,6 +1,6 @@
 <template>
   <div>
-    <label for="priority">Priority</label>
+    <label>Country Selector</label>
     <select v-model="selectedCode" v-on:change="emitToParent">
       <option
         v-for="item in priorities"
@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     emitToParent() {
-      this.$emit("childToParent", this.selectedCode);
+      this.$emit("countryToHome", this.selectedCode);
     },
   },
 };

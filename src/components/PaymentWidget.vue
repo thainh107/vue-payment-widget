@@ -1,9 +1,11 @@
 <template>
   <div class="hello">
-    <input v-model="message" placeholder="edit me" />
-    <CountrySelector v-on:childToParent="onChildClick"></CountrySelector>
-    <PaymentMethods v-model="PaymentMethods"></PaymentMethods>
-    <PaymentMethodForm v-model="age"></PaymentMethodForm>
+    <CountrySelector v-on:countryToHome="countryChange" />
+    <PaymentMethods
+      v-bind:methodsData="paymentMethods"
+      v-on:methodsToHome="methodsChange"
+    />
+    <PaymentMethodForm />
   </div>
 </template>
 
@@ -21,12 +23,9 @@ export default {
         password: "",
         satisfaction: "",
       },
-      message: "",
-      checkboxOptions: [],
-      radioBoxOption: "Male",
-      age: "",
       selectedCode: "",
-      PaymentMethods: [],
+      paymentMethods: [],
+      selectedMethod: ""
     };
   },
   components: {
@@ -35,7 +34,10 @@ export default {
     PaymentMethodForm,
   },
   methods: {
-    async onChildClick(value) {
+    methodsChange(idMethod) {
+      this.selectedMethod = idMethod;
+    },
+    async countryChange(value) {
       this.selectedCode = value;
       const params = {
         params: {
@@ -49,8 +51,7 @@ export default {
         .get(url, params)
         .then((response) => {
           if (response.data) {
-            this.PaymentMethods = response.data;
-            console.log(this.PaymentMethods);
+            this.paymentMethods = response.data;
           }
         })
         .catch((err) => console.log(err));

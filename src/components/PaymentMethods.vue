@@ -1,12 +1,14 @@
 <template>
   <div>
-    <select v-model="selected">
-      <option disabled value="">Please select PaymentMethods</option>
-      <option>A</option>
-      <option>B</option>
-      <option>C</option>
-    </select>
     <span>Selected: {{ selected }}</span>
+    <div
+      v-for="method in methodsData"
+      v-bind:key="method.id"
+      v-bind:value="method.id"
+      v-on:click="selectMethod(method.id)"
+    >
+      <img :src="method.img_url" :alt="method.img_class" width="100" />
+    </div>
   </div>
 </template>
 
@@ -18,5 +20,12 @@ export default {
       selected: "",
     };
   },
+  props: ["methodsData"],
+  methods: {
+    selectMethod(id) {
+      this.selected = id;
+      this.$emit("methodsToHome", this.selected);
+    }
+  }
 };
 </script>
