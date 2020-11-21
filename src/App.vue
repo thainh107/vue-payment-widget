@@ -1,19 +1,16 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-    <PaymentWidget></PaymentWidget>
+    <PaymentWidget />
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
 import PaymentWidget from "./components/PaymentWidget.vue";
 
 export default {
   name: "App",
   components: {
-    HelloWorld,
     PaymentWidget,
   },
 };

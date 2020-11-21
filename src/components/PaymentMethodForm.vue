@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input v-model.number="age" type="number" />
+    <input v-bind:age="age" type="number" v-on:change="$emit('change', $event.target.value)" />
   </div>
 </template>
 
@@ -8,7 +8,11 @@
 export default {
   name: "PaymentMethodForm",
   props: {
-    age: Number,
+    age: String
+  },
+  model: {
+    prop: 'age',
+    event: 'change'
   },
 };
 </script>
