@@ -3,11 +3,11 @@
     <div class="card-form-inner">
       <div class="card-input">
         <label for="cardName" class="card-input-label"> Card Owner </label>
-        <input autofocus id="cardName" class="card-input-input" v-model="name" autocomplete="off" v-on:keypress="isLetter($event)" placeholder="Card holder name" />
+        <input autofocus id="cardName" class="card-input-input" v-model="name" autocomplete="off" v-on:keypress="isLetter($event)" placeholder="Ex: John Smith" />
       </div>
       <div class="card-input">
         <label for="cardNumber" class="card-input-label"> Card Number </label>
-        <input v-model="cardNumber" id="cardNumber" class="card-input-input" autocomplete="off" v-on:keypress="isNumber($event)" placeholder="Card Number" @focusout="validateCardNumber($event)" />
+        <input v-model="cardNumber" id="cardNumber" class="card-input-input" autocomplete="off" v-on:keypress="isNumber($event)" placeholder="XXXX XXXX XXXX XXXX" @focusout="validateCardNumber($event)" />
       </div>
       <div v-if="errorCardNumber !== ''" class="error-warning">
         <label>* {{ errorCardNumber }}</label>
