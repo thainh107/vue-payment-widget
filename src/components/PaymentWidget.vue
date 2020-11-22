@@ -1,45 +1,42 @@
 <template>
   <div class="hello">
     <h1>Payment Widget</h1>
-    
+    <h3>Amount: {{amount}}</h3>
     <CountrySelector v-on:countryToHome="countryChange" />
     <PaymentMethods
       v-bind:methodsData="paymentMethods"
       v-on:methodsToHome="methodsChange"
     />
-    <PaymentMethodForm />
+    <CreditCardForm v-if="selectedMethod" :amountInput="amount" />
   </div>
 </template>
 
 <script>
 import PaymentMethods from "./PaymentMethods";
 import CountrySelector from "./CountrySelector";
-import PaymentMethodForm from "./PaymentMethodForm";
+import CreditCardForm from "./CreditCardForm";
 import axios from "axios";
 export default {
   name: "PaymentWidget",
   data() {
     return {
-      userData: {
-        email: "",
-        password: "",
-        satisfaction: "",
-      },
       selectedCode: "VN",
       paymentMethods: [],
       selectedMethod: "",
+      amount: "5 USD",
     };
   },
   components: {
     PaymentMethods,
     CountrySelector,
-    PaymentMethodForm,
+    CreditCardForm,
   },
   methods: {
     methodsChange(idMethod) {
       this.selectedMethod = idMethod;
     },
     async countryChange(value) {
+      this.selectedMethod = '';
       this.selectedCode = value;
       const params = {
         params: {

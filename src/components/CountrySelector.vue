@@ -1,7 +1,8 @@
 <template>
   <div>
     <label class="title">Country Selector</label>
-    <select v-model="selectedCode" v-on:change="emitToParent">
+    <select v-model="selectedCode" v-on:change="emitToParent" 
+        class="country-option">
       <option
         v-for="item in priorities"
         v-bind:key="item.code"
@@ -59,6 +60,13 @@ export default {
 <style scoped>
 .title {
   margin-right: 10px;
+  font-size: 18px;
+  color: #1a3b5d;
 }
-
+.country-option {
+  font-size: 18px;
+  color: #1a3b5d;
+  border: 1px solid #ced6e0;
+  border-radius: 3px;
+}
 </style>
